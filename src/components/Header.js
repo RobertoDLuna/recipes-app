@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { DataContext } from '../context/DataContext';
 import icon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
 function Header({ title, bool }) {
+  const [disableSearch, setDisableSearch] = useState(true);
+
+  const changeSearch = () => {
+    setDisableSearch(!disableSearch);
+  };
+
   return (
     <header>
       <Link to="/profile">
@@ -18,13 +24,16 @@ function Header({ title, bool }) {
         </button>
       </Link>
       {bool && (
-        <button type="button">
+        <button type="button" onClick={ changeSearch }>
           <img
             src={ searchIcon }
             data-testid="search-top-btn"
             alt="imagem de perfil"
           />
         </button>)}
+      {!disableSearch && (
+        <input type="text" data-testid="search-input" placeholder="Buscar" />
+      )}
       <h1 data-testid="page-title">{title}</h1>
     </header>
   );
