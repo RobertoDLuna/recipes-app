@@ -1,14 +1,13 @@
 // import PropTypes from 'prop-types';
 import React from 'react';
-import Header from '../components/Header';
 // import { DataContext } from '../context/DataContext';
 
-function Foods() {
+function DrinkProgress() {
   return (
     <div>
-      <Header title="Foods" bool />
+      <h1>oi</h1>
     </div>
   );
 }
 
-export default Foods;
+export default DrinkProgress;
