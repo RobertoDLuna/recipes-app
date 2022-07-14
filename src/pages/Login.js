@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 
-function Login() {
+function Login({ history }) {
   const { userData, setUserData, mealsToken, cocktailsToken } = useContext(DataContext);
 
   const handleChange = (value, name) => {
@@ -24,9 +25,10 @@ function Login() {
   };
 
   const handleClick = () => {
-    localStorage.setItem('user', userData.email);
+    localStorage.setItem('user', JSON.stringify({ email: userData.email }));
     localStorage.setItem('mealsToken', mealsToken);
     localStorage.setItem('cocktailsToken', cocktailsToken);
+    history.push('/foods');
   };
 
   return (
@@ -59,5 +61,11 @@ function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default Login;
