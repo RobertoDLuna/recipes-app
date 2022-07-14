@@ -12,14 +12,6 @@ function DataProvider({ children }) {
   const [userData, setUserData] = useState(USER);
   const [mealsToken, setMealsToken] = useState(1);
   const [cocktailsToken, setCocktailsToken] = useState(1);
-  const [disableIcon, setDisableIcon] = useState(true);
-
-  const enableIcon = () => {
-    setDisableIcon(false);
-  };
-  const removeIcon = () => {
-    setDisableIcon(true);
-  };
 
   const contextValue = {
     userData,
@@ -28,9 +20,6 @@ function DataProvider({ children }) {
     mealsToken,
     setCocktailsToken,
     setMealsToken,
-    disableIcon,
-    enableIcon,
-    removeIcon,
   };
 
   return (
