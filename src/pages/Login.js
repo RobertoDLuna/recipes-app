@@ -2,13 +2,9 @@ import React, { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 
 function Login() {
-  const { userData, setUserData } = useContext(DataContext);
+  const { userData, setUserData, mealsToken, cocktailsToken } = useContext(DataContext);
 
   const handleChange = (value, name) => {
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
     const regexValidation = /\S+@\w+\.\w+/;
     const finalValidation = regexValidation.test(userData.email);
     const minLength = 6;
@@ -25,6 +21,12 @@ function Login() {
         disabled: true,
       });
     }
+  };
+
+  const handleClick = () => {
+    localStorage.setItem('user', userData.email);
+    localStorage.setItem('mealsToken', mealsToken);
+    localStorage.setItem('cocktailsToken', cocktailsToken);
   };
 
   return (
@@ -49,7 +51,7 @@ function Login() {
           type="button"
           data-testid="login-submit-btn"
           disabled={ userData.disabled }
-        // onClick={ this.handleClick }
+          onClick={ handleClick }
         >
           Enter
         </button>

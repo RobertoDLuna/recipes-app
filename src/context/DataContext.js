@@ -11,10 +11,16 @@ function DataProvider({ children }) {
   };
 
   const [userData, setUserData] = useState(USER);
+  const [mealsToken, setMealsToken] = useState(1);
+  const [cocktailsToken, setCocktailsToken] = useState(1);
 
   const contextValue = {
     userData,
     setUserData,
+    cocktailsToken,
+    mealsToken,
+    setCocktailsToken,
+    setMealsToken,
   };
 
   return (
