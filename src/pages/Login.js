@@ -1,26 +1,23 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { DataContext } from '../context/DataContext';
 
 function Login({ history }) {
   const { userData, setUserData, mealsToken, cocktailsToken } = useContext(DataContext);
+  const [disabled, setDisabled] = useState(true);
 
   const handleChange = (value, name) => {
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
     const regexValidation = /\S+@\w+\.\w+/;
     const finalValidation = regexValidation.test(userData.email);
     const minLength = 6;
     if (finalValidation && userData.password.length >= minLength) {
-      setUserData({
-        ...userData,
-        [name]: value,
-        disabled: false,
-      });
+      setDisabled(false);
     } else {
-      setUserData({
-        ...userData,
-        [name]: value,
-        disabled: true,
-      });
+      setDisabled(true);
     }
   };
 
@@ -52,7 +49,7 @@ function Login({ history }) {
           className="button-form"
           type="button"
           data-testid="login-submit-btn"
-          disabled={ userData.disabled }
+          disabled={ disabled }
           onClick={ handleClick }
         >
           Enter

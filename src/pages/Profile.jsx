@@ -3,12 +3,12 @@ import React from 'react';
 import Header from '../components/Header';
 // import { DataContext } from '../context/DataContext';
 
-function Foods() {
+function Profile() {
   return (
     <div>
-      <Header title="Foods" bool />
+      <Header title="Profile" bool={ false } />
     </div>
   );
 }
 
-export default Foods;
+export default Profile;
