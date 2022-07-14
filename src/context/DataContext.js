@@ -7,6 +7,7 @@ function DataProvider({ children }) {
   const USER = {
     email: '',
     password: '',
+    disabled: true,
   };
 
   const [userData, setUserData] = useState(USER);
