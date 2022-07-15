@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { DataContext } from '../context/DataContext';
 
@@ -15,6 +16,7 @@ function Drinks({ history }) {
   return (
     <div>
       <Header title="Drinks" bool btnName="drink" />
+      <Footer />
     </div>
   );
 }
