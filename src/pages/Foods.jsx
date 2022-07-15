@@ -15,9 +15,6 @@ function Foods({ history }) {
   return (
     <div>
       <Header title="Foods" bool btnName="food" />
-<<<<<<< HEAD
-      <Footer />
-=======
       {recipe[0]
         && recipe[0].filter((_, index) => index <= +'11').map((e, index) => (
           <div data-testid={ `${index}-recipe-card` } key={ index }>
@@ -30,7 +27,7 @@ function Foods({ history }) {
             <h3 data-testid={ `${index}-card-name` }>{e.strMeal}</h3>
           </div>
         ))}
->>>>>>> ee84c8b4d7e049029f1c3f38371c094ecc67d242
+      <Footer />
     </div>
   );
 }
