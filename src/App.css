@@ -37,10 +37,16 @@
   font-weight: 900;
 }
 
+<<<<<<< HEAD
 .footer {
   bottom: 0;
   position: fixed;
   z-index: 10;
+=======
+.card-img {
+  width: 40%;
+  /* height: 20px; */
+>>>>>>> ee84c8b4d7e049029f1c3f38371c094ecc67d242
 }
 
 @keyframes shake {
