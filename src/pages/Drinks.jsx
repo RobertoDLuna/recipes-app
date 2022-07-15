@@ -6,7 +6,7 @@ import Header from '../components/Header';
 function Drinks() {
   return (
     <div>
-      <Header title="Drinks" bool />
+      <Header title="Drinks" bool btnName="drink" />
     </div>
   );
 }

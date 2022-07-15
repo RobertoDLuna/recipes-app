@@ -6,7 +6,7 @@ import icon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
-function Header({ title, bool }) {
+function Header({ title, bool, btnName }) {
   const [disableSearch, setDisableSearch] = useState(true);
 
   const changeSearch = () => {
@@ -33,7 +33,7 @@ function Header({ title, bool }) {
           />
         </button>)}
       {!disableSearch && (
-        <SearchBar />
+        <SearchBar btnName={ btnName } />
       )}
       <h1 data-testid="page-title">{title}</h1>
     </header>
@@ -42,6 +42,7 @@ function Header({ title, bool }) {
 
 Header.propTypes = {
   bool: PropTypes.bool.isRequired,
+  btnName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
