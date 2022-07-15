@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import { DataContext } from '../context/DataContext';
 import icon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header({ title, bool }) {
   const [disableSearch, setDisableSearch] = useState(true);
@@ -32,7 +33,7 @@ function Header({ title, bool }) {
           />
         </button>)}
       {!disableSearch && (
-        <input type="text" data-testid="search-input" placeholder="Buscar" />
+        <SearchBar />
       )}
       <h1 data-testid="page-title">{title}</h1>
     </header>
