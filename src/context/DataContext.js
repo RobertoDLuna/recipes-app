@@ -24,6 +24,8 @@ function DataProvider({ children }) {
     setRecipes(param);
   };
 
+  const fetchErro = 'Sorry, we haven\'t found any recipes for these filters.';
+
   useEffect(() => {
     const foodFetch = async () => {
       if (foodFilter === 'ingredient') {
@@ -50,13 +52,21 @@ function DataProvider({ children }) {
   useEffect(() => {
     const drinkFetch = async () => {
       if (foodFilter === 'ingredient') {
-        const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searched}`);
-        const json = await resp.json();
-        changeRecipes(json);
+        try {
+          const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searched}`);
+          const json = await resp.json();
+          changeRecipes(json);
+        } catch (e) {
+          global.alert(fetchErro);
+        }
       } else if (foodFilter === 'name') {
-        const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searched}`);
-        const json = await resp.json();
-        changeRecipes(json);
+        try {
+          const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searched}`);
+          const json = await resp.json();
+          changeRecipes(json);
+        } catch (e) {
+          global.alert(fetchErro);
+        }
       } else if (foodFilter === 'firstLetter' && searched.length > 1) {
         global.alert('Your search must have only 1 (one) character');
       } else if (foodFilter === 'firstLetter') {
