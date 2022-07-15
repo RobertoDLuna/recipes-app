@@ -1,14 +1,16 @@
+import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../context/DataContext';
 
-function SearchBar() {
-  const { setFoodFilter, changeSearch } = useContext(DataContext);
+function SearchBar({ btnName }) {
+  const { setFoodFilter, changeSearch, setActualPage } = useContext(DataContext);
   const [type, setType] = useState('');
   const [filter, setFilter] = useState('');
 
-  const handleClick = () => {
+  const handleClick = (btn) => {
     changeSearch(type);
     setFoodFilter(filter);
+    setActualPage(btn);
   };
 
   return (
@@ -52,11 +54,20 @@ function SearchBar() {
         />
         Primeira Letra
       </label>
-      <button type="button" data-testid="exec-search-btn" onClick={ () => handleClick() }>
+      <button
+        type="button"
+        data-testid="exec-search-btn"
+        name={ btnName }
+        onClick={ ({ target: { name } }) => handleClick(name) }
+      >
         Buscar
       </button>
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  btnName: PropTypes.string.isRequired,
+};
 
 export default SearchBar;

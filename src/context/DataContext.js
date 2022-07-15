@@ -18,13 +18,14 @@ function DataProvider({ children }) {
     setSearched(param);
   };
   const [foodFilter, setFoodFilter] = useState('');
+  const [actualPage, setActualPage] = useState('');
   const [recipes, setRecipes] = useState([]);
   const changeRecipes = (param) => {
     setRecipes(param);
   };
 
   useEffect(() => {
-    const doFetch = async () => {
+    const foodFetch = async () => {
       if (foodFilter === 'ingredient') {
         const resp = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searched}`);
         const json = await resp.json();
@@ -41,8 +42,33 @@ function DataProvider({ children }) {
         changeRecipes(json);
       }
     };
-    doFetch();
-  }, [searched, foodFilter]);
+    if (actualPage === 'food') {
+      foodFetch();
+    }
+  }, [searched, foodFilter, actualPage]);
+
+  useEffect(() => {
+    const drinkFetch = async () => {
+      if (foodFilter === 'ingredient') {
+        const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searched}`);
+        const json = await resp.json();
+        changeRecipes(json);
+      } else if (foodFilter === 'name') {
+        const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searched}`);
+        const json = await resp.json();
+        changeRecipes(json);
+      } else if (foodFilter === 'firstLetter' && searched.length > 1) {
+        global.alert('Your search must have only 1 (one) character');
+      } else if (foodFilter === 'firstLetter') {
+        const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searched}`);
+        const json = await resp.json();
+        changeRecipes(json);
+      }
+    };
+    if (actualPage === 'drink') {
+      drinkFetch();
+    }
+  }, [searched, foodFilter, actualPage]);
 
   const contextValue = {
     userData,
@@ -56,6 +82,8 @@ function DataProvider({ children }) {
     setFoodFilter,
     foodFilter,
     recipes,
+    setActualPage,
+    actualPage,
   };
 
   return (
