@@ -7,8 +7,10 @@ function Foods({ history }) {
   const { recipes } = useContext(DataContext);
   const recipe = Object.values(recipes);
   useEffect(() => {
-    if (recipe.length === 1 && recipe[0].length === 1) {
+    if (recipe[0] && recipe[0].length === 1) {
       history.push(`/foods/${recipe[0][0].idMeal}`);
+    } else if (recipes.meals === null) {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
   }, [recipes.length, history, recipes, recipe]);
   return (
