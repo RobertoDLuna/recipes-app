@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { DataContext } from '../context/DataContext';
 
@@ -28,6 +29,7 @@ function Foods({ history }) {
             <h3 data-testid={ `${index}-card-name` }>{e.strMeal}</h3>
           </div>
         ))}
+      <Footer />
     </div>
   );
 }
