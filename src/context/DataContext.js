@@ -24,6 +24,8 @@ function DataProvider({ children }) {
     setRecipes(param);
   };
 
+  const fetchErro = 'Sorry, we haven\'t found any recipes for these filters.';
+
   useEffect(() => {
     const foodFetch = async () => {
       if (foodFilter === 'ingredient') {
