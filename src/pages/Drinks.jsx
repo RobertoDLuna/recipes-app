@@ -5,16 +5,29 @@ import { DataContext } from '../context/DataContext';
 
 function Drinks({ history }) {
   const { recipes } = useContext(DataContext);
+  const recipe = Object.values(recipes);
   useEffect(() => {
-    const recipe = Object.values(recipes);
-    if (recipe && recipe.length === 1) {
+    if (recipe.length === 1 && recipe[0].length === 1) {
       history.push(`/drinks/${recipe[0][0].idDrink}`);
     }
-  }, [recipes.length, history, recipes]);
+    console.log(recipe[0]);
+  }, [recipes.length, history, recipes, recipe]);
 
   return (
     <div>
       <Header title="Drinks" bool btnName="drink" />
+      {recipe[0]
+        && recipe[0].filter((_, index) => index <= +'11').map((e, index) => (
+          <div data-testid={ `${index}-recipe-card` } key={ index }>
+            <img
+              className="card-img"
+              data-testid={ `${index}-card-img` }
+              src={ e.strDrinkThumb }
+              alt="img da receita"
+            />
+            <h3 data-testid={ `${index}-card-name` }>{e.strDrink}</h3>
+          </div>
+        ))}
     </div>
   );
 }

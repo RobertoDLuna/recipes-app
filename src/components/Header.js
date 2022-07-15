@@ -20,7 +20,7 @@ function Header({ title, bool, btnName }) {
           <img
             src={ icon }
             data-testid="profile-top-btn"
-            alt="imagem de perfil"
+            alt="icone de perfil"
           />
         </button>
       </Link>
@@ -29,7 +29,7 @@ function Header({ title, bool, btnName }) {
           <img
             src={ searchIcon }
             data-testid="search-top-btn"
-            alt="imagem de perfil"
+            alt="icone de pesquisa"
           />
         </button>)}
       {!disableSearch && (
