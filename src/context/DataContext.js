@@ -94,6 +94,7 @@ function DataProvider({ children }) {
     recipes,
     setActualPage,
     actualPage,
+    changeRecipes,
   };
 
   return (
