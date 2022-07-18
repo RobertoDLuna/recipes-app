@@ -26,11 +26,13 @@ function Recipes({ food }) {
       changeRecipes(json);
     };
     doFetch();
-  }, [changeRecipes, food]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
-      {recipe[0]
+      <div className="container">
+        {recipe[0]
         && recipe[0].filter((_, index) => index <= +'11').map((e, index) => (
           <div data-testid={ `${index}-recipe-card` } key={ index }>
             <img
@@ -42,6 +44,7 @@ function Recipes({ food }) {
             <h3 data-testid={ `${index}-card-name` }>{food ? e.strMeal : e.strDrink}</h3>
           </div>
         ))}
+      </div>
     </div>
   );
 }

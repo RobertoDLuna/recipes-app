@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .meals {
   align-items: center;
   background: #535353;
@@ -43,10 +48,19 @@
   z-index: 10;
 }
 
-.card-img {
-  width: 40%;
+.container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.card-img {
+  width: 30px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
 
 @keyframes shake {
 
