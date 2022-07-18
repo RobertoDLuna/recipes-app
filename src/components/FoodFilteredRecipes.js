@@ -3,7 +3,8 @@ import { DataContext } from '../context/DataContext';
 
 function FoodFilteredRecipes() {
   const [categories, setCategories] = useState([]);
-  const { changeRecipes, allButtonState, setGoatTrue } = useContext(DataContext);
+  const { changeRecipes, allButtonState, setGoatTrue,
+    setResetFilter, resetFilter } = useContext(DataContext);
 
   useEffect(() => {
     const categoryFetch = async () => {
@@ -20,7 +21,13 @@ function FoodFilteredRecipes() {
     if (param === 'Goat') {
       setGoatTrue(true);
     }
-    changeRecipes(json);
+    if (resetFilter) {
+      changeRecipes(allButtonState);
+      setResetFilter(false);
+    } else {
+      changeRecipes(json);
+      setResetFilter(true);
+    }
   };
 
   return (

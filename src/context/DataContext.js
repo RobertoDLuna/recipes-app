@@ -14,6 +14,7 @@ function DataProvider({ children }) {
   const [cocktailsToken, setCocktailsToken] = useState(1);
   const [allButtonState, setAllButtonState] = useState([]);
   const [goatTrue, setGoatTrue] = useState(false);
+  const [resetFilter, setResetFilter] = useState(false);
 
   const [searched, setSearched] = useState('');
   const changeSearch = (param) => {
@@ -101,6 +102,8 @@ function DataProvider({ children }) {
     setAllButtonState,
     goatTrue,
     setGoatTrue,
+    resetFilter,
+    setResetFilter,
   };
 
   return (

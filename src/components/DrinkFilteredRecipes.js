@@ -3,7 +3,8 @@ import { DataContext } from '../context/DataContext';
 
 function DrinkFilteredRecipes() {
   const [categories, setCategories] = useState([]);
-  const { changeRecipes, allButtonState } = useContext(DataContext);
+  const { changeRecipes, allButtonState,
+    setResetFilter, resetFilter } = useContext(DataContext);
 
   useEffect(() => {
     const categoryFetch = async () => {
@@ -17,7 +18,13 @@ function DrinkFilteredRecipes() {
   const fetchByButtons = async (param) => {
     const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${param}`);
     const json = await resp.json();
-    changeRecipes(json);
+    if (resetFilter) {
+      changeRecipes(allButtonState);
+      setResetFilter(false);
+    } else {
+      changeRecipes(json);
+      setResetFilter(true);
+    }
   };
 
   return (
