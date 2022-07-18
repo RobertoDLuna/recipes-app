@@ -12,6 +12,8 @@ function DataProvider({ children }) {
   const [userData, setUserData] = useState(USER);
   const [mealsToken, setMealsToken] = useState(1);
   const [cocktailsToken, setCocktailsToken] = useState(1);
+  const [allButtonState, setAllButtonState] = useState([]);
+  const [goatTrue, setGoatTrue] = useState(false);
 
   const [searched, setSearched] = useState('');
   const changeSearch = (param) => {
@@ -95,6 +97,10 @@ function DataProvider({ children }) {
     setActualPage,
     actualPage,
     changeRecipes,
+    allButtonState,
+    setAllButtonState,
+    goatTrue,
+    setGoatTrue,
   };
 
   return (

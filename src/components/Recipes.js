@@ -5,25 +5,26 @@ import { DataContext } from '../context/DataContext';
 
 function Recipes({ food }) {
   const history = useHistory();
-  const { recipes, changeRecipes } = useContext(DataContext);
+  const { recipes, changeRecipes, setAllButtonState, goatTrue } = useContext(DataContext);
   const recipe = Object.values(recipes);
   useEffect(() => {
     if (recipe[0] && recipe[0].length === 1) {
-      if (food) {
+      if (food && !goatTrue) {
         history.push(`/foods/${recipe[0][0].idMeal}`);
-      } else {
+      } else if (!food && !goatTrue) {
         history.push(`/drinks/${recipe[0][0].idDrink}`);
       }
     } else if (recipes.meals === null || recipes.drinks === null) {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
-  }, [recipes.length, history, recipes, recipe, food]);
+  }, [recipes.length, history, recipes, recipe, food, goatTrue]);
 
   useEffect(() => {
     const doFetch = async () => {
       const resp = await fetch(`https://www.the${food ? 'meal' : 'cocktail'}db.com/api/json/v1/1/search.php?s=`);
       const json = await resp.json();
       changeRecipes(json);
+      setAllButtonState(json);
     };
     doFetch();
   // eslint-disable-next-line react-hooks/exhaustive-deps
