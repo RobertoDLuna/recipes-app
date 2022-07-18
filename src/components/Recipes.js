@@ -5,7 +5,13 @@ import { DataContext } from '../context/DataContext';
 
 function Recipes({ food }) {
   const history = useHistory();
-  const { recipes, changeRecipes, setAllButtonState, goatTrue } = useContext(DataContext);
+  const {
+    recipes,
+    changeRecipes,
+    setAllButtonState,
+    goatTrue,
+  } = useContext(DataContext);
+
   const recipe = Object.values(recipes);
   useEffect(() => {
     if (recipe[0] && recipe[0].length === 1) {
@@ -43,15 +49,19 @@ function Recipes({ food }) {
             .map((e, index) => (
               <div data-testid={ `${index}-recipe-card` } key={ index }>
                 <Link to={ food ? `/foods/${e.idMeal}` : `/drinks/${e.idDrink}` }>
-                  <img
-                    className="card-img"
-                    data-testid={ `${index}-card-img` }
-                    src={ food ? e.strMealThumb : e.strDrinkThumb }
-                    alt="img da receita"
-                  />
-                  <h3 data-testid={ `${index}-card-name` }>
-                    {food ? e.strMeal : e.strDrink}
-                  </h3>
+                  <button
+                    type="button"
+                  >
+                    <img
+                      className="card-img"
+                      data-testid={ `${index}-card-img` }
+                      src={ food ? e.strMealThumb : e.strDrinkThumb }
+                      alt="img da receita"
+                    />
+                    <h3 data-testid={ `${index}-card-name` }>
+                      {food ? e.strMeal : e.strDrink}
+                    </h3>
+                  </button>
                 </Link>
               </div>
             ))}
