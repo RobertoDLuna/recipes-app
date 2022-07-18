@@ -16,6 +16,7 @@ function DataProvider({ children }) {
   const [goatTrue, setGoatTrue] = useState(false);
   const [resetFilter, setResetFilter] = useState(false);
   const [filteredById, setFilteredById] = useState([]);
+  const [recomendations, setRecomendations] = useState([]);
 
   const [searched, setSearched] = useState('');
   const changeSearch = (param) => {
@@ -107,6 +108,8 @@ function DataProvider({ children }) {
     setResetFilter,
     filteredById,
     setFilteredById,
+    recomendations,
+    setRecomendations,
   };
 
   return (
