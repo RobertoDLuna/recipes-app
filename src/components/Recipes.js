@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
 
 function Recipes({ food }) {
@@ -21,30 +21,40 @@ function Recipes({ food }) {
 
   useEffect(() => {
     const doFetch = async () => {
-      const resp = await fetch(`https://www.the${food ? 'meal' : 'cocktail'}db.com/api/json/v1/1/search.php?s=`);
+      const resp = await fetch(
+        `https://www.the${
+          food ? 'meal' : 'cocktail'
+        }db.com/api/json/v1/1/search.php?s=`,
+      );
       const json = await resp.json();
       changeRecipes(json);
       setAllButtonState(json);
     };
     doFetch();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
       <div className="container">
         {recipe[0]
-        && recipe[0].filter((_, index) => index <= +'11').map((e, index) => (
-          <div data-testid={ `${index}-recipe-card` } key={ index }>
-            <img
-              className="card-img"
-              data-testid={ `${index}-card-img` }
-              src={ food ? e.strMealThumb : e.strDrinkThumb }
-              alt="img da receita"
-            />
-            <h3 data-testid={ `${index}-card-name` }>{food ? e.strMeal : e.strDrink}</h3>
-          </div>
-        ))}
+          && recipe[0]
+            .filter((_, index) => index <= +'11')
+            .map((e, index) => (
+              <div data-testid={ `${index}-recipe-card` } key={ index }>
+                <Link to={ food ? `/foods/${e.idMeal}` : `/drinks/${e.idDrink}` }>
+                  <img
+                    className="card-img"
+                    data-testid={ `${index}-card-img` }
+                    src={ food ? e.strMealThumb : e.strDrinkThumb }
+                    alt="img da receita"
+                  />
+                  <h3 data-testid={ `${index}-card-name` }>
+                    {food ? e.strMeal : e.strDrink}
+                  </h3>
+                </Link>
+              </div>
+            ))}
       </div>
     </div>
   );
