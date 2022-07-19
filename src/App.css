@@ -62,6 +62,27 @@
   flex-direction: column;
 }
 
+.recomendations-container {
+  display: flex;
+  margin-bottom: 50px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  width: 60vw;
+}
+
+.recomendation-card {
+  border-radius: 15px;
+  margin: 20px;
+  width: 150px;
+}
+
+.recomendation-card img {
+  width: 100px;
+  border-radius: 15px 15px 0 0;
+}
+
+
+
 @keyframes shake {
 
   0% {
