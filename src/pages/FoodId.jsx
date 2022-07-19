@@ -21,9 +21,9 @@ function FoodId() {
 
   useEffect(() => {
     const recomendationFetch = async () => {
-      const resp = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+      const resp = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
       const json = await resp.json();
-      setRecomendations(json.meals);
+      setRecomendations(json.drinks);
     };
     recomendationFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -135,30 +135,19 @@ function FoodId() {
           allowFullScreen
           title="Embedded youtube"
         />
-        {recomendations.length && (
-          <>
-            <div data-testid="0-recomendation-card">
-              <img
-                className="card-img"
-                src={ recomendation[0].strMealThumb }
-                alt="img da receita"
-              />
-              <h3 data-testid="0-recomendation-title">
-                { recomendation[0].strMeal }
-              </h3>
-            </div>
-            <div data-testid="1-recomendation-card">
-              <img
-                className="card-img"
-                src={ recomendation[1].strMealThumb }
-                alt="img da receita"
-              />
-              <h3 data-testid="1-recomendation-title">
-                { recomendation[1].strMeal }
-              </h3>
-            </div>
-          </>
-        )}
+        <div className="recomendations-container">
+          {recomendation.length
+            && recomendation.map((e, i) => (
+              <div
+                key={ e.strDrink }
+                className="recomendation-card"
+                data-testid={ `${i}-recomendation-card` }
+              >
+                <img src={ e.strDrinkThumb } alt="img da receita" />
+                <h3 data-testid={ `${i}-recomendation-title` }>{e.strDrink}</h3>
+              </div>
+            ))}
+        </div>
       </div>
     )
   );
