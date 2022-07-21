@@ -27,7 +27,6 @@ function RecipeInProgress() {
   const url = window.location.href.substr(+'22', +'6');
   const link = window.location.href;
   const refinedLink = link.slice(0, link.length - +'12');
-  console.log(link);
   setFoodOrDrink(url);
 
   useEffect(() => {
