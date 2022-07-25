@@ -42,19 +42,14 @@
   font-weight: 900;
 }
 
-.footer {
-  bottom: 0;
-  position: fixed;
-  z-index: 10;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
 }
 
 .card-img {
-  width: 30px;
+  border-radius: 15px;
+  width: 50%;
 }
 
 .main-container {
@@ -63,11 +58,18 @@
 }
 
 .recomendations-container {
+  backdrop-filter: blur(10px);
+  background: rgba(13, 13, 13, 0.195);
   display: flex;
   margin-bottom: 50px;
+  margin-top: 20px;
+  -webkit-backdrop-filter: blur(10px);
   overflow-x: scroll;
   scroll-behavior: smooth;
-  width: 60vw;
+  width: 70vw;
+  border-radius: 7px;
+  border: 1px solid rgba(19, 19, 19, 0.18);
+  margin-bottom: 90px;
 }
 
 .recomendation-card {
@@ -84,14 +86,501 @@
 .btn-footer {
   bottom: 0;
   position: fixed;
+  left: calc(50% - 85px);
+  margin-bottom: 10px;
+  height: 50px;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px;
+  background-color: rgb(81, 61, 61);
+  font-size: 20px;
+  border: none;
+}
+
+.btn-footer:hover {
+  background-color: white;
 }
 
 .cut {
   text-decoration: line-through;
 }
 
-@keyframes shake {
+/* LOGIN */
 
+.father {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 30vh;
+  min-width: 40vh;
+  max-width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10%;
+  justify-content: center;
+}
+
+.meals {
+  background-image: url(./images/back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.bk-login {
+  height: 100vh;
+}
+
+.inputs-login {
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border: 3px solid rgba(255, 255, 255, 0.811);
+  padding: 6px;
+  color: currentColor;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.button-form {
+  appearance: none;
+  background-color: #000000;
+  border-width: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  height: 35px;
+  font-family: 'Lato', sans-serif;
+  width: 90px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin-top: 10px;
+  opacity: 1;
+  outline: 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: geometricprecision;
+  text-transform: uppercase;
+  transition: opacity 300ms cubic-bezier(0.694, 0, 0.335, 1),
+    background-color 100ms cubic-bezier(0.694, 0, 0.335, 1),
+    color 100ms cubic-bezier(0.694, 0, 0.335, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+/* HEADER */
+
+.header-father {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 30vh;
+  min-width: 40vh;
+  max-width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  color: white;
+}
+
+.h-btn {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-h {
+  all: unset;
+  width: 80px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 20px;
+}
+
+.btn-h::after,
+.btn-h::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all 0.4s;
+}
+
+.btn-h::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #ffe2e2;
+  border-radius: 10px;
+}
+
+.btn-h::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.btn-h:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.btn-h:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.btn-h:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+/* foodfilter  */
+
+.filters-father {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.button-29 {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #ffffff 0,
+    #e4e4e4 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'JetBrains Mono', monospace;
+  height: 35px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.button-29:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #000000 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #1b1a1a 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #ffffff 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+/* RECIPES */
+
+.cards {
+  padding-bottom: 30px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn-cards {
+  width: 30vh;
+  height: 22vh;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.195);
+  /* box-shadow: 0 8px 20px 0 rgba(248, 248, 248, 0.557); */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+/* footer */
+
+.footer {
+  background: rgba(255, 183, 183, 0.195);
+  /* box-shadow: 0 8px 20px 0 rgba(248, 248, 248, 0.557); */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 7px;
+  border: 1px solid rgba(19, 19, 19, 0.18);
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+/*id*/
+
+.white {
+  color: white;
+}
+
+.border {
+  background: rgba(255, 255, 255, 0.195);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 7px;
+  border: 1px solid rgba(19, 19, 19, 0.18);
+  padding: 20px;
+}
+
+.list-father {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.list {
+  list-style: none;
+}
+.m-h {
+  display: flex;
+  gap: 5px;
+  height: 15vw;
+  width: 35vw;
+  align-items: center;
+  padding: 10px;
+}
+
+.instructions {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 7px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  padding: 20px;
+}
+
+.video {
+  padding: 20px;
+}
+
+/* progress */
+
+.button-79 {
+  backface-visibility: hidden;
+  background: #d7d7d7;
+  border: 0;
+  border-radius: 0.375rem;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, Helvetica, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  padding: 1rem 1.25rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 10px 0;
+}
+
+.button-79:disabled {
+  color: #787878;
+  cursor: auto;
+}
+
+.button-79:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-79:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(0.125rem);
+}
+
+.button-79:focus {
+  outline: 0 solid transparent;
+}
+
+.button-79:focus:before {
+  border-width: 0.125rem;
+  content: '';
+  left: calc(-1 * 0.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1 * 0.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-79:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-79:not(:disabled):active {
+  transform: translateY(0.125rem);
+}
+
+/* done recipes */
+
+.filter-father {
+  display: flex;
+  gap: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.gap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* PROFILE */
+
+.profile-father {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.button-80 {
+  background: #fff;
+  backface-visibility: hidden;
+  border-radius: 0.375rem;
+  border-style: solid;
+  border-width: 0.125rem;
+  box-sizing: border-box;
+  color: #212121;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, Helvetica, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  padding: 0.875rem 1.125rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-80:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-80:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(0.125rem);
+}
+
+.button-80:focus {
+  outline: 0 solid transparent;
+}
+
+.button-80:focus:before {
+  content: '';
+  left: calc(-1 * 0.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1 * 0.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-80:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-80:focus:not(:focus-visible):before {
+  border-width: 0;
+}
+
+.button-80:not(:disabled):active {
+  transform: translateY(0.125rem);
+}
+
+@keyframes shake {
   0% {
     transform: rotate(5deg);
   }
@@ -106,7 +595,6 @@
 }
 
 @keyframes clink {
-
   0% {
     transform: rotate(-10deg);
   }
